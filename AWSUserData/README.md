@@ -1,4 +1,4 @@
-# UserData 를 이용하여, AWS 에 Node 설치 및 싫행. 
+# UserData 를 이용하여, AWS 에 Node 설치 및 실행. 
 
 ## Node 프로그램 생성. 
 
@@ -207,7 +207,7 @@ Node app is running on port: 8080
 
 위와 같이 다시 실행하면 새로 생성된 ip 에 접근하면 같은 결과를 확인할 수 있다. 
 
-## 새로 변경된 UserData 삺펴보기 
+## 새로 변경된 UserData 살펴보기 
 
 UserData2.txt 코드를 다음과 같이 작성했다. 
 다음 코드는 systemd 에 서비스를 등록하고, 부트시 실행하도록 잡아 주었다. 
