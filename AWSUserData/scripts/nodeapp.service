@@ -1,0 +1,16 @@
+# vi /etc/systemd/system/nodeapp.service
+[Unit]
+Description=MyNodeApp
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/var/tmp/nodeapp.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+
+# systemctl daemon-reload
+# systemctl enable nodeapp.service
+# systemctl start nodeapp.service
