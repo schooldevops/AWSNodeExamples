@@ -1,0 +1,21 @@
+#! /bin/bash
+sudo yum update -y
+sudo yum install -y amazon-linux-extras
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum install -y epel-release
+sudo yum install -y nodejs
+sudo yum install -y git
+
+mkdir -p /user/home/ec2-user/app
+cd /user/home/ec2-user/app
+
+git clone https://github.com/schooldevops/AWSNodeExamples.git
+
+cp ./AWSNodeExamples/AWSUserData/scripts/nodeapp.sh /var/tmp/nodeapp.sh
+
+cd AWSNodeExamples/AWSUserData/nodesample
+npm install 
+
+systemctl daemon-reload
+systemctl enable /AWSNodeExamples/AWSUserData/scripts/nodeapp.service
+systemctl start nodeapp.service
