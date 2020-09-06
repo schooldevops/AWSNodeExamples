@@ -1,0 +1,30 @@
+---
+schemaVersion: "2.2"
+description: "Install NodeJS and Run Node Web App"
+parameters:
+  Message:
+    type: "String"
+    description: "Example"
+    default: "Hello World"
+mainSteps:
+- action: aws:runShellScript
+  name: "installNodejsAndRunApp"
+  inputs:
+    runCommand:
+    - 'sudo yum update -y'
+    - 'sudo yum install -y amazon-linux-extras'
+    - 'sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+    - 'sudo yum install -y epel-release'
+    - 'sudo yum install -y nodejs'
+    - 'sudo yum install -y git'
+    - 'mkdir -p /user/home/ec2-user/app'
+    - 'cd /user/home/ec2-user/app'
+    - 'git clone https://github.com/schooldevops/AWSNodeExamples.git'
+    - 'cd /user/home/ec2-user/app/AWSNodeExamples/AWSUserData/nodesample'
+    - 'npm install'
+    - 'cp /user/home/ec2-user/app/AWSNodeExamples/AWSUserData/scripts/nodeapp.sh /var/tmp/nodeapp.sh'
+    - 'sudo chmod +x /var/tmp/nodeapp.sh'
+    - 'cp /user/home/ec2-user/app/AWSNodeExamples/AWSUserData/scripts/nodeapp.service /etc/systemd/system/nodeapp.service'
+    - 'systemctl daemon-reload'
+    - 'systemctl enable nodeapp.service'
+    - 'systemctl start nodeapp.service'
