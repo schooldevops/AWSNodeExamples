@@ -2,4 +2,14 @@
 sudo yum update -y
 sudo yum install -y node 
 sudo yum install -y git 
+sudo yum install -y pm2 -g 
 
+mkdir -p /user/home/ec2-user/app
+cd /usr/home/ec2-user/app
+
+git clone https://github.com/schooldevops/AWSNodeExamples.git
+
+cd AWSNodeExamples/AWSUserData/nodesample
+npm install 
+
+pm2 start app.js 
