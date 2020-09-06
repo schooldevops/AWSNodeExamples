@@ -1,7 +1,6 @@
 # vi /etc/systemd/system/nodeapp.service
 [Unit]
 Description=MyNodeApp
-After=network.target
 
 [Service]
 Type=simple
